@@ -1,0 +1,19 @@
+{
+  "name": "wsb",
+  "version": "1.0.0",
+  "description": "Esse é um WebService para a utilização de recursos de uma biblioteca, visando facilitar a transação de processos entre os usuários da biblioteca e seu sistema de empréstimos, renovação de livros, pagamentos de multas e ve-rificação do acervo, entre outros.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexsandraM/WSB.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexsandraM/WSB/issues"
+  },
+  "homepage": "https://github.com/AlexsandraM/WSB#readme"
+}
