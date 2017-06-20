@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf8">
+  <title>Cadastro Biblioteca</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src ="../bootstrap\js\angular.min.js"> </script>
+  <script type="text/javascript" src= "../bootstrap\js\app.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/estilo.css">
+
+  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src= "js/bootstrap.min.js"></script>
+  <script type="text/javascript" src= "js/script.js"></script>
+</head>
+<body ng-app="">
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <!-- Botão para expandir o menu. Aparece quando a largura da tela diminui (Requer JS). -->
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!-- O nome, marca, logotipo do nosso projeto -->
+      <a class="navbar-brand" href="#">WES-Biblioteca</a>
+    </div>
+    <!-- Os itens de menu -->
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Login</a></li>
+        <li><a href="#">Cadastro</a></li>
+        <li><a href="#">Sair</a></li>
+      </ul>
+        </div>
+      </div>
+    </div>
+  <div ng-controller="MainController as c">
+    <div class="container" >
+      <div class="row"> <!--linha de tabela-->
+        <div class="col-md-offset-3 col-md-6">
+            <h1>Cadastro Professores</h1>
+          <form class="form-group">
+            <div class="form-group  col-md-12">
+              <label for="name">Nome</label>
+              <input type="text" class="form-control" name="nome" value="">
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="name">SIAPE</label>
+              <input type="text" class="form-control" name="matricula" value="" maxlength="7">
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="name">Curso</label>
+              <select class="form-control" name="curso">
+                <option></option>
+                <option>Formação Geral</option>
+                <option>Informática</option>
+                <option>Edificações</option>
+                <option>Geologia</option>
+                <option>Agroecologia</option>
+                <option>Mineração</option>
+              </select>
+            </div>
+
+            <div class="form-group col-md-12">
+              <label for="name">E-Mail</label>
+              <input type="email" class="form-control" name="email" value="">
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="name">Senha</label>
+              <label for="name">(Mínimo 6 dígitos)</label>
+              <input type="password" class="form-control" name="senha" value="" minlength="6">
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="name">Confirme a Senha</label>
+              <input type="password" class="form-control" name="confirmarasenha" value="" minlength="6">
+            </div>
+            <div class="col-md-12">
+              <button type="button" class="button1" name="button">Criar Conta</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
