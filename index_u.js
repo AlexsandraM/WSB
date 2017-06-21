@@ -7,6 +7,7 @@ var routes = express.routes()
 
 app.use(bodyParser.json())
 
+router.use(require('.app/routes/user_routes'))
 
 var server = app.Listen(3000, function(){
   console.log("Example app listening on port 3000!")

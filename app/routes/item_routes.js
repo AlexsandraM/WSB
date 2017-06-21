@@ -1,6 +1,9 @@
 var express = require('express')
 var bodyParser = require('body-Parser')
 var Item = require('../model/item_bb.js')
+var Livro = require('../model/livro.js')
+var MidiaDigital = require('../model/midia.js')
+var Periodico = require('../model/periodico.js')
 
 var routes = express.Router()
 
@@ -142,7 +145,6 @@ routes.get('/item/:name', function(req, res) {
 	var itemName = req.params.titulo;
 
 	Usuario.find({titulo: itemName})
-		.select("description done date priority")
 		.then((it) => {
 			res.json({
 				success: true,
