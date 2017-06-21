@@ -51,25 +51,25 @@
       </div>
     </div>
     </div>
-    <div ng-controller="MainController as c">
-    <div class="container" >
+    <div id="organizar" ng-controller="MainController as c">
+    <div class="container">
       <div class="row"> <!--linha de tabela-->
-        <div class="col-md-offset-3 col-md-6">
-            <h1>Cadastro Aluno</h1>
+        <div id ="box" class="col-md-offset-3 col-md-6">
+            <h1 id="h1"><center>Cadastro Aluno<center></h1>
           <form class="form-group">
             <div class="form-group  col-md-12">
               <label for="name">Nome</label>
-              <input type="text" class="form-control" name="nome" value="">
+              <input id="inp" type="text" class="default" name="nome" value="">
             </div>
 
             <div class="form-group col-md-6">
               <label for="name">Matricula</label>
-              <input type="text" class="form-control" name="matricula" value="" maxlength="12">
+              <input id="inp"  type="text" class="default" name="matricula" value="" maxlength="12">
             </div>
 
             <div class="form-group col-md-6">
               <label for="name">Curso</label>
-              <select class="form-control" name="curso">
+              <select id="inp"  class="default" name="curso">
                 <option></option>
                 <option>Informática</option>
                 <option>Edificações</option>
@@ -82,23 +82,26 @@
 
             <div class="form-group col-md-12">
               <label for="name">E-Mail</label>
-              <input type="email" class="form-control" name="email" value="">
+              <input id="inp"  type="email" class="default" name="email" value="">
             </div>
 
             <div class="form-group col-md-6">
               <label for="name">Senha</label>
               <label for="name">(Mínimo 6 dígitos)</label>
-              <input type="password" class="form-control" name="senha" value="" minlength="6">
+              <input id="inp"  type="password" class="default" name="senha" value="" minlength="6">
             </div>
 
             <div class="form-group col-md-6">
               <label for="name">Confirme a Senha</label>
-              <input type="password" class="form-control" name="confirmarasenha" value="" minlength="6">
+              <input id="inp" type="password" class="default" name="confirmarasenha" value="" minlength="6">
             </div>
 
-            <div class="col-md-12">
-              <button type="button" class="button1"  name="button">Criar Conta</button>
+            <div class="form-group col-md-offset-6 col-md-2">
+              <button type="button" class="button1" name="button"><b>Cancelar</b></button>
             </div>
+            <div class="form-group col-md-4 ">
+              <button type="button" class="button2" name="button"><b>Criar Conta</b></button>
+           </div>
 
           </form>
          </div>
