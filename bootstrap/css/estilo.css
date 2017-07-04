@@ -1,0 +1,25 @@
+body{
+  padding: 70px;
+  background-color: #708090;
+}
+.button1{
+  padding: 5px 50px;
+  border-radius: 7px;
+  border: 0px;
+  background-color: #a7e3ec;
+  margin-right: auto;
+}
+#navbar{
+  padding-top: 8px;
+}
+
+#sair{
+  margin-left: 250px;
+}
+/*
+.blue{
+  background-color: #66a6ff;
+  border-width: 1px;
+  border-color: black;
+  border-style: solid;
+} so para visualizar a coluna*/
