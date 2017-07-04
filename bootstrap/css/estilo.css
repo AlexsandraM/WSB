@@ -83,9 +83,9 @@ padding-top: 20px;
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
-  width: 100%;
+  width: 95%;
   margin-bottom: 25px;
-  margin-left: 0px;
+  margin-left: 10px;
 }
 
 #organizar {
@@ -109,6 +109,23 @@ padding-top: 20px;
 
 #buttons{
   width: 50px;
+}
+
+.loginbutton{
+  padding: 15px;
+  border: 0px;
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 25px;
+  margin-left: 0px;
 }
 
 #formlogin{
