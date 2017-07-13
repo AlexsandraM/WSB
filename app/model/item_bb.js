@@ -7,7 +7,7 @@ var ItemBiblioteca = new Schema({
 	tipo: { type: String, enum:['livro', 'periodico', 'midia']},
 	nota: { type: Number, default: 0},
 	genero: { type: String},
-	objeto: {type: ObjectId}
+	objeto: {type: ObjectId, default: 0}
 });
 
 module.exports = mongoose.model('ItemBiblioteca', ItemBiblioteca);

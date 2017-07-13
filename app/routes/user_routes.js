@@ -9,12 +9,12 @@ var Usuario = require('../model/usuario.js')
 
 routes.post('/user', function (req, res) {
 	var us = new Usuario({
-    matricula: req.body.matricula;
-  	nome: req.body.nome;
-  	senha: req.body.senha;
-  	adm: req.body.adm;
-  	qtdEmprestimo: req.body.qtdEmprestimo;
-  	limite: req.body.limite,
+    matricula: req.body.matricula,
+  	nome: req.body.nome,
+  	senha: req.body.senha,
+  	adm: req.body.adm,
+  	qtdEmprestimo: req.body.qtdEmprestimo,
+  	limite: req.body.limite
 	})
   us.save().then((obj) => {
 		res.json({
@@ -30,7 +30,7 @@ routes.post('/user', function (req, res) {
 }) // put
 
 routes.put('/user/:matricula', function (req, res) {
-	var matri: req.params.matricula;
+	var matri= req.params.matricula;
 
 	Usuario.find(matricula: matri ).exec().
 	then((usuarios) => {
