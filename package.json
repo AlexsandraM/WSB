@@ -2,7 +2,7 @@
   "name": "teste-api-jwt",
   "version": "1.0.0",
   "description": "Esse é um WebService para a utilização de recursos de uma biblioteca, visando facilitar a transação de processos entre os usuários da biblioteca e seu sistema de empréstimos, renovação de livros, pagamentos de multas e ve-rificação do acervo, entre outros.",
-  "main": "index_u.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,6 +20,7 @@
     "mocha": "^3.4.2"
   },
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.2",
     "chai": "^4.0.0",
     "chai-http": "^3.0.0",
