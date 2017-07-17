@@ -11,12 +11,17 @@
 
 #### Comandos úteis:
   * Criar um novo repositório:
+  
        git init
 
   * Comitar:
+
        git add --ignore-removal .
+
        git commit -m "[comentários das alterações]"
+
        git push origin master  //Envia para o servidor do git
 
   * Pegar alterações:
+
        git pull
