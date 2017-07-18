@@ -1,11 +1,52 @@
-
-
-var routes = express.Router()
+//var routes = express.Router()
 var express = require('express')
-var bodyParser = require('body-parser')
-var Usuario = require('../model/usuario.js')
+var usuarioController = require('../controllers/usuarioController')
+var routes = express.Router();
+
+
+function pegarToken(req, res, next){
+	var header = req.header['authorization'];
+
+	if (typeof header !== 'undefined'){
+		req.token = header;
+		next();
+	} else{
+		res.sendStatus(403);
+	}
+
+}
 
 // R O T A S
+
+//criar usuários
+rotas.post('/setup', function(req, res) {
+  // create a sample user
+  var novo = new User({
+		tipoUsuario: req.body.tipoUsuario,
+    matricula: req.body.matricula,
+    nome: req.body.nome,
+    senha: req.body.senha,
+		adm: req.body.adm
+  });
+
+	if (novo.tipoUsuario == 'aluno'){
+		user.curso = req.body.curso;
+		user.limite = 3;
+	} else if(novo.tipoUsuario == 'professor'){
+		user.coordenacao = req.body.coordenacao;
+	} else if (novo.tipoUsuario == 'tecnico') {
+
+	}
+
+  // save the sample user
+  novo.save(function(err) {
+    if (err) throw err;
+
+    console.log('Usuário salvo com sucesso');
+    res.json({ success: true });
+  });
+});
+
 
 routes.post('/user', function (req, res) {
 	var us = new Usuario({
@@ -15,23 +56,15 @@ routes.post('/user', function (req, res) {
   	adm: req.body.adm,
   	limite: req.body.limite,
 	})
-  us.save().then((obj) => {
-		res.json({
-	  	success: true,
-	  	result: obj
-	  }) // json
-	}, (err) => {
-		res.json({
-	  	success: false,
-	  	result: err
-	  }) // json
-	}) // then
 }) // put
 
-routes.put('/user/:matricula', function (req, res) {
-	var matri: req.params.matricula;
 
-	Usuario.find(matricula: matri ).exec().
+// R O T A S  by Alê
+
+routes.put('/user/:matricula', function (req, res) {
+	var matri= req.params.matricula;
+
+	Usuario.find({'matricula': matri} ).exec().
 	then((usuarios) => {
 			for (var usuariosBd of usuarios) {
 				for (var usuariosReq of req.body.user) {
@@ -154,8 +187,5 @@ routes.delete('/user/:name', function(req,res){
 	})
 })
 
-var server = app.Listen(3000, function(){
-  console.log("Example app listening on port 3000!")
-})
 
-modeule.exports = server;
+module.exports = routes;

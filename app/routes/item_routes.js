@@ -1,40 +1,41 @@
 var express = require('express')
 var bodyParser = require('body-Parser')
 var Item = require('../model/item_bb.js')
-var Livro = require('../model/livro.js')
-var MidiaDigital = require('../model/midia.js')
-var Periodico = require('../model/periodico.js')
+var app = express()
 
 var routes = express.Router()
+
+app.use(bodyParser.json())
+app.use(require('../model/livro'))
 
 // R O T A S
 
 routes.post('/item', function (req, res) {
-		tipo: req.body.tipo
+		tipo = req.body.tipo
 
-	if(tipo = 'livro'){
+	if(tipo = "livro"){
 		var item = new Livro({
-			autor: req.body.autor;
-		  isbn: req.body.isbn;
-		  paginas: req.body.paginas;
-		  quantidade: req.body.quantidade;
+			autor: req.body.autor,
+		  isbn: req.body.isbn,
+		  paginas: req.body.paginas,
+		  quantidade: req.body.quantidade
 		})
 	}
 
 	if(tipo = 'midia'){
-		var item new MidiaDigital({
-		autor: req.body.autor;
-		issn: req.body.issn;
-		tamanho: req.body.tamanho;
+		var item = new MidiaDigital({
+		autor: req.body.autor,
+		issn: req.body.issn,
+		tamanho: req.body.tamanho
 	})
 	}
 
 	if(tipo = 'periodico'){
-		var item new Periodico{(
-		issn: req.body.issn;
-		paginas: req.body.paginas;
-		quantidade: req.body.quantidade;
-		edicao: req.body.edicao;
+		var item = new Periodico({
+		issn: req.body.issn,
+		paginas: req.body.paginas,
+		quantidade: req.body.quantidade,
+		edicao: req.body.edicao
 	})
 	}
 
@@ -49,14 +50,13 @@ routes.post('/item', function (req, res) {
 	  	result: err
 	  })
 	})
-})
-
+//})
 	var ib = new Item_Biblioteca({
-  	titulo: req.body.titulo;
-  	nota: req.body.nota;
-  	tipo: req.body.tipo;
-  	genero: req.body.genero;
-		objeto: item._id;
+  	titulo: req.body.titulo,
+  	nota: req.body.nota,
+  	tipo: req.body.tipo,
+  	genero: req.body.genero,
+		objeto: item._id
 	})
   ib.save().then((obj) => {
 		res.json({
@@ -160,7 +160,7 @@ routes.get('/item/:name', function(req, res) {
 
 
 routes.delete('/item/:nome', function(req,res){
-	var tituloItem: reqs.params.titulo;
+	var tituloItem = reqs.params.titulo;
 	Item_Biblioteca.remove({titulo: tituloItem})
 	.then((it) => {
 		res.json({
@@ -175,8 +175,4 @@ routes.delete('/item/:nome', function(req,res){
 	})
 })
 
-var server = routes.Listen(3000, function(){
-  console.log("Example routes listening on port 3000!")
-})
-
-module.express = server;
+module.exports = routes;
