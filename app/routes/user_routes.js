@@ -50,12 +50,12 @@ routes.post('/setup', function(req, res) {
 
 
 routes.post('/user', function (req, res) {
-
-    var matricula = req.body.matricula;
-  	var senha = req.body.senha;
-
-	usuarioController.save(matricula, senha, function(resp){
-		res.json(resp);
+	var us = new Usuario({
+    matricula: req.body.matricula,
+  	nome: req.body.nome,
+  	senha: req.body.senha,
+  	adm: req.body.adm,
+  	limite: req.body.limite,
 	})
 }) // put
 
@@ -74,7 +74,6 @@ routes.put('/user/:matricula', function (req, res) {
 						usuariosBd.nome = usuariosReq.nome;
 						usuariosBd.senha = usuariosReq.senha;
 						usuariosBd.adm= usuariosReq.adm;
-            usuariosBd.qtdEmprestimo= usuariosReq.qtdEmprestimo;
             usuariosBd.limite= usuariosReq.limite;
 						usuariosBd.save((err) => {
 							if (err) {
@@ -124,6 +123,7 @@ routes.get('/user/:matricula', function(req, res) {
 	var mat = req.params.matricula;
 
 	Usuario.find({matricula: mat})
+	.exec()
 		.then((usuario) => {
 			res.json({
 				success: true,

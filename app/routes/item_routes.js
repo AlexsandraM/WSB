@@ -145,7 +145,6 @@ routes.get('/item/:name', function(req, res) {
 	var itemName = req.params.titulo;
 
 	Usuario.find({titulo: itemName})
-		.select("description done date priority")
 		.then((it) => {
 			res.json({
 				success: true,

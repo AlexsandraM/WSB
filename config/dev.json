@@ -1,3 +1,5 @@
 {
-  "ambiente": "Executando ambiente de desenvolvimento"
+  "ambiente": "Executando ambiente de desenvolvimento",
+  "database": "mongodb://",
+  
 }
