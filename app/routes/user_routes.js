@@ -1,7 +1,8 @@
 //var routes = express.Router()
-var express = require('express')
-var usuarioController = require('../controllers/usuarioController')
+var express = require('express');
+var usuarioController = require('../controllers/usuarioController');
 var routes = express.Router();
+var bcrypt = require('bcrypt-nodejs');
 
 
 function pegarToken(req, res, next){
@@ -19,13 +20,13 @@ function pegarToken(req, res, next){
 // R O T A S
 
 //criar usuários
-rotas.post('/setup', function(req, res) {
+routes.post('/setup', function(req, res) {
   // create a sample user
   var novo = new User({
 		tipoUsuario: req.body.tipoUsuario,
     matricula: req.body.matricula,
     nome: req.body.nome,
-    senha: req.body.senha,
+    senha: bcrypt.hashSync(req.body.senha),
 		adm: req.body.adm
   });
 
@@ -35,7 +36,7 @@ rotas.post('/setup', function(req, res) {
 	} else if(novo.tipoUsuario == 'professor'){
 		user.coordenacao = req.body.coordenacao;
 	} else if (novo.tipoUsuario == 'tecnico') {
-		
+
 	}
 
   // save the sample user
