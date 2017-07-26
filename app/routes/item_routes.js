@@ -13,7 +13,7 @@ app.use(require('../model/livro'))
 routes.post('/item', function (req, res) {
 		tipo = req.body.tipo
 
-	if(tipo = "livro"){
+	if(tipo = 'livro'){
 		var item = new Livro({
 			autor: req.body.autor,
 		  isbn: req.body.isbn,

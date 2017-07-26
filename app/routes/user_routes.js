@@ -7,7 +7,7 @@ var routes = express.Router();
 function pegarToken(req, res, next){
 	var header = req.header['authorization'];
 
-	if (typeof header !== 'undefined'){
+	if (header){
 		req.token = header;
 		next();
 	} else{
@@ -48,15 +48,6 @@ rotas.post('/setup', function(req, res) {
 });
 
 
-routes.post('/user', function (req, res) {
-	var us = new Usuario({
-    matricula: req.body.matricula,
-  	nome: req.body.nome,
-  	senha: req.body.senha,
-  	adm: req.body.adm,
-  	limite: req.body.limite,
-	})
-}) // put
 
 
 // R O T A S  by Alê
@@ -69,11 +60,19 @@ routes.put('/user/:matricula', function (req, res) {
 			for (var usuariosBd of usuarios) {
 				for (var usuariosReq of req.body.user) {
 					if (usuariosReq._id == usuariosBd._id) {
+						usuariosBd.tipoUsuario = usuariosReq.tipoUsuario;
 						usuariosBd.matricula = usuariosReq.matricula;
 						usuariosBd.nome = usuariosReq.nome;
 						usuariosBd.senha = usuariosReq.senha;
 						usuariosBd.adm= usuariosReq.adm;
             usuariosBd.limite= usuariosReq.limite;
+
+						if (usuariosReq.tipoUsuario == 'aluno'){
+							usuariosBd.curso = usuariosReq.curso;
+						} else if(usuariosReq.tipoUsuario == 'professor'){
+							usuariosBd.coordenacao = usuariosReq.coordenacao;
+						}
+
 						usuariosBd.save((err) => {
 							if (err) {
 								res.json({
