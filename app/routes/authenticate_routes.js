@@ -22,7 +22,7 @@ rotas.post('/authenticate', function(req, res) {
     } else if (user) {
 
       // check if password matches
-      if (user.senha != req.body.senha) {
+      if (bcrypt.compareSync(user.senha != req.body.senha)) {
         res.json({ success: false, message: 'Senha incorreta' });
       } else {
 
@@ -42,7 +42,6 @@ rotas.post('/authenticate', function(req, res) {
 
   });
 });
-
 
 //Rota do middleware para identificar um token
 //Esse é também o código que bloqueia o acesso às rotas se n houver autenticação
@@ -79,7 +78,7 @@ rotas.use(function(req, res, next) {
 
 // route to show a random message (GET http://localhost:8080/api/)
 rotas.get('/', function(req, res) {
-  res.json({ message: 'Welcome to the coolest API on earth!' });
+  res.json({ message: 'Biblioteca IFPB - Campus Picuí' });
 });
 
 // route to return all users (GET http://localhost:8080/api/users)
