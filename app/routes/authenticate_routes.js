@@ -3,12 +3,12 @@ var app         = express();
 var User   = require('../models/usuario'); // referencia o modelo do mongoose que utilizaremos
 var jwt    = require('jsonwebtoken'); // usado para criar e verificar os tokens
 var config = require('../../config'); // referencia o arquivo de configuração
-var rotas = express.Router(); //instância de rota para as rotas
+var routes = express.Router(); //instância de rota para as rotas
 
 // ---------------------------------R O T A S-----------------------------------
 
 //Rota para autenticar usuários (POST http://localhost:3000/api/authenticate)
-rotas.post('/authenticate', function(req, res) {
+routes.post('/authenticate', function(req, res) {
 
   // find the user
   User.findOne({
@@ -45,7 +45,7 @@ rotas.post('/authenticate', function(req, res) {
 
 //Rota do middleware para identificar um token
 //Esse é também o código que bloqueia o acesso às rotas se n houver autenticação
-rotas.use(function(req, res, next) {
+routes.use(function(req, res, next) {
 
   // check header or url parameters or post parameters for token
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
@@ -77,15 +77,15 @@ rotas.use(function(req, res, next) {
 });
 
 // route to show a random message (GET http://localhost:8080/api/)
-rotas.get('/', function(req, res) {
+routes.get('/', function(req, res) {
   res.json({ message: 'Biblioteca IFPB - Campus Picuí' });
 });
 
 // route to return all users (GET http://localhost:8080/api/users)
-rotas.get('/users', function(req, res) {
+routes.get('/users', function(req, res) {
   User.find({}, function(err, users) {
     res.json(users);
   });
 });
 
-module.exports = rotas;
+module.exports = routes;

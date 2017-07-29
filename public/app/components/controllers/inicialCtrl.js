@@ -1,6 +1,6 @@
-angular.module('wsb').controller('loginCtrl', loginCtrl);
+app.controller('inicialCtrl', inicialCtrl);
 
-function loginCtrl($scope, $rootScope, $routeParams, $location, authSvc) {
+function inicialCtrl($scope, $rootScope, $routeParams, $location, apiSvc) {
   var self = this;
 
   self.show = function(){

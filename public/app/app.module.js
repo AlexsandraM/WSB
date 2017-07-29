@@ -1,25 +1,24 @@
-var app = angular.module("wsb", ['ngRoute']);
-
+var app = angular.module('wsb', ['ngRoute']);
 app.config(function($routeProvider) {
 	$routeProvider
 
-	// pagina inicial de boas vindas
-	.when('/welcome', {
-		templateUrl : '../bootstrap/inicial.html'
+	//template inicial
+	.when('/', {
+		templateUrl : 'app/routes/inicial.html'
 	})
 	// tela inciai do usuário
 	.when('/home', {
-		templateUrl : '../bootstrap/telaPrincipal.html'
+		templateUrl : 'app/routes/telaPrincipal.html'
 	})
 	// pagina de login
 	.when('/login', {
-		templateUrl : '../bootstrap/login.html'
+		templateUrl : 'app/routes/login.html'
 	})
 	// pagina de cadastro
 	.when('/setup', {
-		templateUrl : '../bootstrap/telaCadastroAluno.html'
+		templateUrl : 'app/routes/telaCadastroAluno.html'
 	})
 	.otherwise({
-		redirectTo: '/home'
-	});
+		redirectTo: '/'
+	})
 });

@@ -1,6 +1,5 @@
-//var routes = express.Router()
 var express = require('express');
-var usuarioController = require('../controllers/usuarioController');
+var User = require('../models/usuario')
 var routes = express.Router();
 var bcrypt = require('bcrypt-nodejs');
 
