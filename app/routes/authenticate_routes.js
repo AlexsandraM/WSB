@@ -2,7 +2,7 @@ var express     = require('express');
 var app         = express();
 var User   = require('../models/usuario'); // referencia o modelo do mongoose que utilizaremos
 var jwt    = require('jsonwebtoken'); // usado para criar e verificar os tokens
-var config = require('../../config'); // referencia o arquivo de configuração
+var config = require('config'); // referencia o arquivo de configuração
 var routes = express.Router(); //instância de rota para as rotas
 
 // ---------------------------------R O T A S-----------------------------------

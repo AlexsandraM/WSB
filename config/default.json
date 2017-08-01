@@ -1,0 +1,5 @@
+{
+"ambiente": "Executando ambiente de desenvolvimento padrão!",
+"database": "mongodb://todo-app:esquemaquente@localhost:27017/admin",
+"secret": "123"
+}

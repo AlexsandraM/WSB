@@ -1,4 +1,4 @@
-angular.module('wsb').controller('mainCtrl', mainCtrl);
+wsb.controller('mainCtrl', mainCtrl);
 
 function mainCtrl(){
 

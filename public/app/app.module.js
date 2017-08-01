@@ -1,12 +1,12 @@
-var app = angular.module('wsb', ['ngRoute']);
-app.config(function($routeProvider) {
+var wsb = angular.module('wsb', ['ngRoute']);
+wsb.config(function($routeProvider) {
 	$routeProvider
 
 	//template inicial
 	.when('/', {
 		templateUrl : 'app/routes/inicial.html'
 	})
-	// tela inciai do usuário
+	// tela incial do usuário
 	.when('/home', {
 		templateUrl : 'app/routes/telaPrincipal.html'
 	})
@@ -21,4 +21,5 @@ app.config(function($routeProvider) {
 	.otherwise({
 		redirectTo: '/'
 	})
+
 });

@@ -1,4 +1,4 @@
-angular.module('wsb', []).service('apiSvc', ApiService)
+wsb.service('apiSvc', ApiService)
 
 function ApiService ($http) {
   var self = this;

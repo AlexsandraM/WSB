@@ -1,9 +1,15 @@
-angular
-    .module('wsb')
-    .service('authSvc', AuthService);
+wsb.service('authSvc', AuthService);
 
-function AuthService($window) {
+function AuthService($window, $http) {
 	var self = this;
+  var API = "http://localhost:3000/"
+
+  self.login = function(matricula, senha){
+    return $http.post(API + "#!/login", {
+      matricula: matricula,
+      senha: senha
+    })
+  }
 
 	self.saveToken = function(token) {
 	  $window.localStorage['jwtToken'] = token;

@@ -2,41 +2,35 @@
 <html ng-app="wsb">
 <head>
   <meta charset="UTF-8">
-  <title></title>
-  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <title>Biblioteca - IFPB</title>
+  <link rel="shortcut icon" href="/images/logo.png">
+  <link rel="stylesheet" href="/scripts/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/estilo.css">
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-  <!-- <script src="js/jquery-3.2.1.min.js"></script> -->
-  <script src="/scripts/jquery/dist/jquery.min.js"></script>
-  <script src="/scripts/angular/angular.min.js"></script>
-  <script src="/scripts/angular-route/angular-route.min.js"></script>
-  <script src="/scripts/angular-route/angular-route.js"></script>
-  <script src= "js/bootstrap.min.js"></script>
-  <script src="./app/app.module.js"></script>
-  <script src="./app/components/services/apiService.js"></script>
-  <script src="./app/components/controllers/mainCtrl.js"></script>
-  <script src="./app/components/controllers/loginCtrl.js"></script>
+
 
 </head>
 
-  <body id="telainicio" ng-cintroller="mainCtrl as main" >
-
-    <header>
-        <title>Biblioteca</title>
-      <div class="container">
-        <div class="intro-text">
-          <div class="intro-lead-in">Seja Bem-Vindo(a)! </div>
-          <div class="intro-heading"><a href="#" style="color:white">Biblioteca IFPB - Campus Picuí</a></div>
-          <button type="button" class="buttoninicial"><a href="#!/login"  style="color:white"><b>Fazer Login</b></a></button>
-          &nbsp;
-          <button type="button" class="buttoninicial" name="button"><b>Solicitar Cadastro</b></button>
-        </div>
-      </div>
-    </header>
+<body id="telainicio" ng-cloak ng-controller="mainCtrl as main" >
 
    <div ng-view></div>
+
+   <script type="text/javascript" src="/scripts/jquery/dist/jquery.js"></script>
+   <script src="/scripts/jquery/dist/jquery.min.js"></script>
+   <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+   <!-- <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script> -->
+   <script src= "/scripts/bootstrap/dist/js/bootstrap.min.js"></script>
+   <script src="/scripts/angular/angular.min.js"></script>
+   <script src="/scripts/angular/angular.js"></script>
+   <script src="/scripts/angular-route/angular-route.min.js"></script>
+   <!-- <script src="/scripts/angular-route/angular-route.js"></script> -->
+   <script src="./app/app.module.js"></script>
+   <script src="./app/components/services/apiService.js"></script>
+   <script src="./app/components/services/authService.js"></script>
+   <script src="./app/components/controllers/authCtrl.js"></script>
+   <script src="./app/components/controllers/mainCtrl.js"></script>
+   <script src="./app/components/controllers/loginCtrl.js"></script>
+   <!-- <script src="js/jquery-3.2.1.min.js"></script> -->
+
 </body>
-
-
 
 </html>

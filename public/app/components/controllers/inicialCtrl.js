@@ -1,4 +1,4 @@
-app.controller('inicialCtrl', inicialCtrl);
+wsb.controller('inicialCtrl', inicialCtrl);
 
 function inicialCtrl($scope, $rootScope, $routeParams, $location, apiSvc) {
   var self = this;
