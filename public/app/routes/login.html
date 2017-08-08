@@ -1,4 +1,4 @@
-<div class="page-header" ng-cloak ng-controller="authCtrl as a">
+<div  ng-cloak ng-controller="authCtrl as a">
   <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
       <div class="navbar-header">
@@ -22,9 +22,9 @@
   <div id="page" class="login-page">
     <div id="formlogin" class="form">
       <form class="login-form">
-        <input id="inp" type="text" ng-model="a.email" placeholder="matrícula" required >
-        <input id="inp" type="password" ng-model="a.senha" placeholder="senha" required />
-        <button type="button" class="button2" name="button" ng-click="a.autenticar()"><b>Entrar</b></button>
+        <input id="inp" type="text" ng-model="a.matricula" ng-class="c.eventClass" placeholder="matrícula" required="required">
+        <input id="inp" type="password" ng-model="a.senha" placeholder="senha" required="required">
+        <button type="button" class="button2" name="button" ng-click="a.autenticar()"><a href="" style="color:white"><b>Entrar</b></a></button>
       </form>
     </div>
   </div>

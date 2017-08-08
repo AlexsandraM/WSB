@@ -1,41 +1,33 @@
-wsb.service('authSvc', AuthService);
+angular.module('wsb').service('authSvc', AuthService)
 
-function AuthService($window, $http) {
-	var self = this;
-  var API = "http://localhost:3000/"
+function AuthService($http, $window, $location) {
+  var API = "http://localhost:3000/api"
+  var self = this;
 
-  self.login = function(matricula, senha){
-    return $http.post(API + "#!/login", {
+  self.login = function(matricula, senha) {
+    return $http.post(API + '/authenticate', {
       matricula: matricula,
       senha: senha
     })
   }
 
-	self.saveToken = function(token) {
-	  $window.localStorage['jwtToken'] = token;
-	}
+  self.parseJwt = function(token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace('-', '+').replace('_', '/');
+    return JSON.parse($window.atob(base64));
+  }
 
-	self.getToken = function() {
-	  return $window.localStorage['jwtToken'];
-	}
+  self.isAuthed = function() {
+    var token = self.getToken();
+    if(token){
+        var params = self.parseJwt(token);
+        return Math.round(new Date().getTime() / 1000) <= params.exp;
+    }else{
+      return false;
+    }
+  }
 
-	self.parseJwt = function(token) {
-	  var base64Url = token.split('.')[1];
-	  var base64 = base64Url.replace('-', '+').replace('_', '/');
-	  return JSON.parse($window.atob(base64));
-	}
-
-	self.isAuthed = function() {
-	  var token = self.getToken();
-	  if(token) {
-	    var params = self.parseJwt(token);
-	    return Math.round(new Date().getTime() / 1000) <= params.exp;
-	  } else {
-	    return false;
-	  }
-	}
-
-	self.getUid = function() {
+  self.getUid = function() {
 	  var token = self.getToken();
 	  if(token) {
 	    var params = self.parseJwt(token);
@@ -43,8 +35,15 @@ function AuthService($window, $http) {
 	  }
 	}
 
-	self.logout = function() {
-	  $window.localStorage.removeItem('jwtToken');
-	  $window.localStorage.removeItem('user');
-	}
+  self.saveToken = function(token) {
+    $window.localStorage['jwtToken'] = token;
+  }
+
+  self.getToken = function() {
+    return $window.localStorage['jwtToken'];
+  }
+
+  self.logout = function() {
+    $window.localStorage.removeItem('jwtToken');
+  }
 }

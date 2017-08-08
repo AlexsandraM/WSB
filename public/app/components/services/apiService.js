@@ -1,12 +1,26 @@
-wsb.service('apiSvc', ApiService)
+angular.module('wsb').service('apiSvc', ApiService)
 
-function ApiService ($http) {
-  var self = this;
-  var API = "http://localhost:3000/";
+function ApiService($http) {
+  var API = "http://localhost:3000/api"
 
-  self.getLogin = function(){
-    return $http.get(API + 'login')
+  this.cadastrarCliente = function(matricula, senha){
+    return $http.post(API + '/users', {
+      email: email,
+      senha: senha
+    })
   }
+
+}
+
+// wsb.service('apiSvc', ApiService)
+//
+// function ApiService ($http) {
+//   var self = this;
+//   var API = "http://localhost:3000/";
+//
+//   self.getLogin = function(){
+//     return $http.get(API + 'login')
+//   }
 
   // return {
   //   getToken : function () {
@@ -26,4 +40,4 @@ function ApiService ($http) {
   //     $q.when();
   //   }
   // };
-}
+//}

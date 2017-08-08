@@ -1,5 +1,5 @@
 var wsb = angular.module('wsb', ['ngRoute']);
-wsb.config(function($routeProvider) {
+  wsb.config(function($routeProvider) {
 	$routeProvider
 
 	//template inicial
@@ -15,7 +15,7 @@ wsb.config(function($routeProvider) {
 		templateUrl : 'app/routes/login.html'
 	})
 	// pagina de cadastro
-	.when('/setup', {
+	.when('/cadastroAluno', {
 		templateUrl : 'app/routes/telaCadastroAluno.html'
 	})
 	.otherwise({
