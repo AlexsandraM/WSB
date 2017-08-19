@@ -21,40 +21,36 @@ var self = this;
       var token = res.data ? res.data.token : null;
         if(token){
           authSvc.saveToken(token);
-          $rootScope.$broadcast('evento', {alerta: "logado", mensagem: res.data.mensagem})
+          erro = false;
+          self.error(erro)
           $location.path('/home')
         }else{
           console.log(res.data);
-          $rootScope.$broadcast('evento', {alerta: "erro", message: res.data.mensagem});
+          self.erro = true;
+          self.error(self.erro)
         }
       }, (res) => {
         var token = res.data ? res.data.token : null;
         if(token){
           authSvc.saveToken(token);
-          $rootScope.$broadcast('evento', {alerta: "logado", mensagem: res.data.mensagem})
+          erro = false;
+          self.error(erro)
           $location.path('/home')
         }else{
           console.log(res.data.mensagem);
-          $rootScope.$broadcast('evento', {alerta: "erro", message: res.data.mensagem});
+          erro = true;
+          self.error(erro)
         }
       })
   }
 
-  $scope.$on('evento', function(erro, args){
-    self.event = true;
-    if(args.alerta == "erro"){
-      self.eventClass = 'alert-danger';
-    }else{
-      self.eventClass = 'alert-info';
-    }
-    self.eventMessage = args.message;
-  })
-
-  self.isAdm = function() {
-    if (self.admin){
-      next();
+  self.error = function(erro){
+    if (erro){
+      console.log('erro');
+      self.evento = 'alert alert-danger'
     } else{
-      console.log("Somente administradores")
+      console.log('logado');
+      self.evento = 'alert alert-success'
     }
   }
 
@@ -63,3 +59,12 @@ var self = this;
     $location.path('/login');
   }
 }
+
+
+// self.isAdm = function() {
+//   if (self.admin){
+//     next();
+//   } else{
+//     console.log("Somente administradores")
+//   }
+// }

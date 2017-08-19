@@ -11,6 +11,17 @@ function AuthService($http, $window, $location) {
     })
   }
 
+  self.cadastro = function(matricula, senha, email, nome, adm){
+    return $http.post(API + '/users', {
+      token: self.getToken(),
+      matricula: matricula,
+      senha: senha,
+      email: email,
+      nome: nome,
+      adm: adm
+    })
+  }
+
   self.parseJwt = function(token) {
     var base64Url = token.split('.')[1];
     var base64 = base64Url.replace('-', '+').replace('_', '/');
