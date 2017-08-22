@@ -2,6 +2,9 @@ var wsb = angular.module('wsb', ['ngRoute']);
   wsb.config(function($routeProvider) {
 	$routeProvider
 
+  .when('/teste', {
+		templateUrl : 'app/routes/teste.html'
+	})
 	//template inicial
 	.when('/', {
 		templateUrl : 'app/routes/inicial.html'
