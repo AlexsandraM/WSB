@@ -1,10 +1,11 @@
 wsb.controller('authCtrl', AuthenticationCtrl);
 
 function AuthenticationCtrl($scope, $rootScope, $routeParams, $location, authSvc) {
-var self = this;
+  var self = this;
   self.matricula = "";
   self.senha = "";
   self.erro = false;
+  self.eventClass = "";
 
   self.handleRequest = function(res) {
     var token = res.data ? res.data.token : null;
@@ -21,7 +22,7 @@ var self = this;
       var token = res.data ? res.data.token : null;
         if(token){
           authSvc.saveToken(token);
-          erro = false;
+          self.erro = false;
           self.error(erro)
           $location.path('/home')
         }else{
@@ -33,26 +34,24 @@ var self = this;
         var token = res.data ? res.data.token : null;
         if(token){
           authSvc.saveToken(token);
-          erro = false;
+          self.erro = false;
           self.error(erro)
           $location.path('/home')
         }else{
           console.log(res.data.mensagem);
-          erro = true;
-          self.error(erro)
+          self.erro = true;
+          self.error(erro);
         }
       })
   }
 
-  self.error = function(erro){
-    if (erro){
-      console.log('erro');
-      self.evento = 'alert alert-danger'
-    } else{
-      console.log('logado');
-      self.evento = 'alert alert-success'
-    }
+self.error = function(self.erro) {
+  if (self.erro){
+    self.eventClass="alert-danger";
+  } else{
+    self.eventClass="alert-success";
   }
+}
 
   self.logout = function () {
     authSvc.logout();

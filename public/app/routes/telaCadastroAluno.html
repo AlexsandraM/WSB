@@ -11,18 +11,18 @@
               <div class="form-group">
                 <div class="col-md-12">
                   <label for="nome" class="control-label">Nome</label>
-                  <input class="form-control" type="text" name="titulo" value="">
+                  <input class="form-control" type="text" name="titulo" ng-model="u.nome" value="">
                 </div>
               </div>
 
               <div class="form-group">
                 <div class="col-md-6">
                   <label for="sobrenome">Matrícula</label>
-                  <input class="form-control" type="text" name="autor" value="">
+                  <input class="form-control" type="text" name="autor" ng-model="u.matricula" value="">
                 </div>
                 <div class="col-md-6">
                   <label for="name" class="control-label">Curso</label>
-                  <select class="form-control" name="genero">
+                  <select class="form-control" name="genero" ng-model="u.curso">
                     <option></option>
                     <option>Informática</option>
                     <option>Edificações</option>
@@ -37,18 +37,18 @@
               <div class="form-group">
                 <div class="col-md-12">
                   <label for="email">E-mail</label>
-                  <input class="form-control" type="email" name="autor" value="">
+                  <input class="form-control" type="email" name="autor" ng-model="u.email" value="">
                 </div>
               </div>
 
               <div class="form-group">
                 <div class="col-md-6">
                   <label for="sobrenome">Senha</label>
-                  <input class="form-control" type="password" name="autor" value="">
+                  <input class="form-control" type="password" name="autor" ng-model="u.senha" value="">
                 </div>
                 <div class="col-md-6">
                   <label for="sobrenome">Confirmar Senha</label>
-                  <input class="form-control" type="password" name="autor" value="">
+                  <input class="form-control" type="password" name="autor" ng-model="u.confsenha" value="">
                 </div>
               </div>
 

@@ -64,27 +64,6 @@ routes.use(function(req, res, next) {
   }
 });
 
-//Cadastrar usuario (POST http://localhost:3000/api/users)
-routes.post('/users', (req, res) => {
-  var user = new User ({
-    matricula: req.body.matricula,
-    senha: bcrypt.hashSync(req.body.senha),
-    email: req.body.email,
-    nome: req.body.nome,
-    adm: req.body.adm
-  })
-
-  user.save().then((obj) => {
-    res.json({
-      success: true,
-      message: "Usuário cadastrado com sucesso!",
-      result: obj
-    })
-  }, (erro) => {
-    retornaErro(res, err)
-  })
-})
-
 // route para mostrar uma mensagem inicial (GET http://localhost:3000/api/)
 routes.get('/', function(req, res) {
   res.json({ message: 'Biblioteca do IFPB - Campus Picuí' });

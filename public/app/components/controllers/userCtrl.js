@@ -7,9 +7,13 @@ function UserController($scope, $rootScope, $routeParams, $location, authSvc) {
   self.curso = "";
   self.email = "";
   self.senha = "";
+  self.confsenha = "";
 
   self.cadastrar =  function(){
-    authSvc.cadastro(self.nome, self.matricula, self.curso, self.email, self.senha);
+    authSvc.cadastro(self.nome, self.matricula, self.curso, self.email, self.senha)
+    .then(function(res){
+        $location.path('/home');
+    })
     $location.path('/home');
   }
 

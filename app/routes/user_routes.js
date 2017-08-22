@@ -2,6 +2,27 @@ var express = require('express')
 var User = require('../models/usuario');
 var routes = express.Router()
 
+//route para criar usuário (POST http://localhost:3000/api/users)
+routes.post('/users', function(req, res){
+  var novo = new User({
+    nome: req.body.nome,
+    matricula: req.body.matricula,
+    curso: req.body.curso,
+    email: req.body.email,
+    senha: bcrypt.hashSync(req.body.senha)
+  })
+
+  user.save().then((obj) => {
+    res.json({
+      success: true,
+      message: "Usuário cadastrado com sucesso!",
+      result: obj
+    })
+  }, (erro) => {
+    retornaErro(res, err)
+  })
+})
+
 // route para retornar todos os usuarios(GET http://localhost:3000/api/users)
 routes.get('/users', function(req, res) {
   User.find({}, '_id matricula', function(erro, users) {

@@ -11,14 +11,14 @@ function AuthService($http, $window, $location) {
     })
   }
 
-  self.cadastro = function(matricula, senha, email, nome, adm){
+  self.cadastrar = function(nome, matricula, curso, email, senha){
     return $http.post(API + '/users', {
       token: self.getToken(),
-      matricula: matricula,
-      senha: senha,
-      email: email,
       nome: nome,
-      adm: adm
+      matricula: matricula,
+      curso: curso,
+      email: email,
+      senha: senha
     })
   }
 
