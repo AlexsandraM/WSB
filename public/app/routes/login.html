@@ -2,34 +2,62 @@
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-      </div>
-      <!-- Os itens de menu -->
       <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav text-center">
           <li class=""><a href="#!/home">Biblioteca IFPB-Campus Picuí <span></span></a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
 
+<style media="screen">
+  .baixarLogin{
+    margin-top: 65px;
+  }
+</style>
 
-  <div id="imagem">
+  <div class="baixarLogin">
     <center><img width="200px" height="200px" src="../images/logo.png"/></center>
   </div>
-  <div id="page" class="login-page">
-    <div id="formlogin" class="form">
-      <form class="login-form">
-        <input class="inp" type="text" ng-model="a.matricula" ng-class="c.eventClass" required="required" placeholder="matrícula">
-        <input class="inp" type="password" ng-model="a.senha" placeholder="senha" required="required">
-        <a href="" style="color:white"><button type="submit" class="button2" name="button" ng-click="a.autenticar()"><b>Entrar</b></button></a>
-      </form>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h3>Entrar</h3>
+          </div>
+          <div class="panel-body">
+            <form class="form-horizontal">
+              <div class="form-group">
+                <div class="col-md-12">
+                  <label for="nome" class="control-label">Matrícula</label>
+                  <input class="form-control" type="text" name="login" value="">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-12">
+                  <label for="nome" class="control-label">Senha</label>
+                  <input class="form-control" type="text" name="senha" value="">
+                </div>
+              </div>
+            </div>
+            <div class="panel-footer text-right">
+              <button type="submit" name="button" class="btn btn-default"
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Clique para cancelar">
+              Cancelar
+              </button>
+              <button type="submit" name="button" class="btn btn-success"
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Clique para logar">
+              Logar
+              </button>
+           </div>
+            </form>
+        </div>
+      </div>
     </div>
   </div>
 </div>
