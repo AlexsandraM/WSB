@@ -30,7 +30,7 @@
 </head>
 
 <body id="telainicio" ng-cloak ng-controller="mainCtrl as main" >
-  <nav class="navbar navbar-default navbar-fixed-top" >
+  <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -50,16 +50,25 @@
           <li class="dropdown active">
             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastrar<span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="#!/cadastroAluno">Cadastrar Aluno</a></li>
-              <li><a href="#!/cadastroProf">Cadastrar Prof</a></li>
-              <li><a href="#!/cadastroTecnico">Cadastrar Técnico</a></li>
+              <li><a href="#!/cadastroAluno">Cadastrar Alunos</a></li>
+              <li><a href="#!/cadastroProf">Cadastrar Professores</a></li>
+              <li><a href="#!/cadastroTecnico">Cadastrar Técnicos</a></li>
               <li role="separator" class="divider"></li>
               <li><a href="#!/cadastroLivro">Cadastrar Livros</a></li>
               <li><a href="#!/cadastroPeriodico">Cadastrar Periódicos</a></li>
               <li><a href="#!/cadastroMidiaD">Cadastrar Mídias D.</a></li>
             </ul>
           </li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Listar<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#!/cadastroAluno">Alunos</a></li>
+              <li><a href="#!/cadastroProf">Professores</a></li>
+              <li><a href="#!/cadastroTecnico">Técnicos</a></li>
+            </ul>
+          </li>
         </ul>
+
         <form class="navbar-form pull-left">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Procure no acervo">
@@ -72,7 +81,6 @@
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
-
    <div ng-view></div>
 
 
