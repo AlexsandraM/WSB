@@ -1,19 +1,10 @@
-<div ng-controller="mainCtrl as c">
-
-<style media="screen">
-
-.baixar{
-  margin-top: 100px;
-}
-
-</style>
-
+<div ng-controller="livroCtrl as lc">
 <div class="container baixar">
   <div class="row">
     <div class="col-md-offset-3 col-md-6">
-      <div class="panel panel-default">
+      <div class="panel panel-default text-center">
         <div class="panel-heading">
-          Cadastro de Livros
+          <h3>Cadastro de Livros</h3>
         </div>
 
         <div class="panel-body">
@@ -21,26 +12,26 @@
             <div class="form-group">
               <div class="col-md-12">
                 <label for="nome" class="control-label">Título</label>
-                <input class="form-control" type="text" name="titulo" value="">
+                <input class="form-control" type="text" name="titulo" ng-model="lc.titulo" value="">
               </div>
             </div>
 
             <div class="form-group">
               <div class="col-md-12">
                 <label for="sobrenome">Autor</label>
-                <input class="form-control" type="text" name="autor" value="">
+                <input class="form-control" type="text" name="autor" ng-model="lc.autor" value="">
               </div>
             </div>
 
             <div class="form-group">
               <div class="col-md-6">
                 <label for="nome" class="control-label">ISBN</label>
-                <input class="form-control" type="text" name="nome" value="">
+                <input class="form-control" type="text" name="nome" ng-model="lc.isbn" value="">
               </div>
 
               <div class="col-md-6">
                 <label for="name" class="control-label">Gênero</label>
-                <select class="form-control" name="genero">
+                <select class="form-control" name="genero" ng-model="lc.genero">
                   <option></option>
                   <option>Ação</option>
                   <option>Aventura</option>
@@ -57,15 +48,16 @@
             data-toggle="tooltip"
             data-placement="bottom"
             title="Clique para cancelar">
-            Cancelar
-          </button>
-          <button type="submit" name="button" class="btn btn-success"
-          data-toggle="tooltip"
-          data-placement="bottom"
-          title="Clique para cadastrar">
-          Cadastrar
-        </button>
-      </div>
+            Limpar
+            </button>
+            <button type="submit" name="button" class="btn btn-success"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Clique para cadastrar"
+            ng-click="lc.cadastrarLivro()">
+            Cadastrar
+            </button>
+         </div>
       </form>
   </div>
 </div>

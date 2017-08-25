@@ -1,12 +1,11 @@
-var mongoose = require('mongoose'),
-		Schema = mongoose.Schema,
-		ObjectId = Schema.ObjectId;
+var mongoose = require('mongoose');
+var	Schema = mongoose.Schema;
 
-var Livro = new Schema({
-  autor: { type: String, max:50},
-  isbn: { type: String, max:20},
-  paginas: {type: Number},
-  quantidade: {type: Number}
+var Livro = new mongoose.Schema({
+	titulo: { type: String},
+  autor: { type: String},
+  isbn: { type: String},
+  genero: {type: String}
 })
 
 module.exports = mongoose.model('Livro', Livro);

@@ -4,8 +4,9 @@ function AuthenticationCtrl($scope, $rootScope, $routeParams, $location, authSvc
   var self = this;
   self.matricula = "";
   self.senha = "";
-  self.erro = false;
+  var erro = false;
   self.eventClass = "";
+  self.navbar = false
 
   self.handleRequest = function(res) {
     var token = res.data ? res.data.token : null;
@@ -22,42 +23,31 @@ function AuthenticationCtrl($scope, $rootScope, $routeParams, $location, authSvc
       var token = res.data ? res.data.token : null;
         if(token){
           authSvc.saveToken(token);
-          self.erro = false;
-          self.error(erro)
+          erro = false;
+          // self.error(erro)
           $location.path('/home')
         }else{
           console.log(res.data);
-          self.erro = true;
-          self.error(self.erro)
+          erro = true;
+          // self.error(self.erro)
         }
       }, (res) => {
         var token = res.data ? res.data.token : null;
         if(token){
           authSvc.saveToken(token);
-          self.erro = false;
-          self.error(erro)
+          erro = false;
+          // self.error(erro)
           $location.path('/home')
         }else{
           console.log(res.data.mensagem);
-          self.erro = true;
-          self.error(erro);
+          erro = true;
+          // self.error(erro);
         }
       })
   }
-
-self.error = function(self.erro) {
-  if (self.erro){
-    self.eventClass="alert-danger";
-  } else{
-    self.eventClass="alert-success";
-  }
 }
 
-  self.logout = function () {
-    authSvc.logout();
-    $location.path('/login');
-  }
-}
+
 
 
 // self.isAdm = function() {

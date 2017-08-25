@@ -48,28 +48,29 @@
                 </div>
                 <div class="col-md-6">
                   <label for="sobrenome">Confirmar Senha</label>
-                  <input class="form-control" type="password" name="autor" ng-model="u.confsenha" value="">
+                  <input class="form-control" type="password" name="autor" value="">
                 </div>
               </div>
 
-              </div>
-              <div class="panel-footer text-right">
-                <button type="submit" name="button" class="btn btn-danger"
-                data-toggle="tooltip"
-                data-placement="bottom"
-                title="Clique para cancelar">
-                Cancelar
-                </button>
-                <button type="submit" name="button" class="btn btn-success"
-                data-toggle="tooltip"
-                data-placement="bottom"
-                title="Clique para cadastrar">
-                Cadastrar
-                </button>
-             </div>
-            </form>
-          </div>
+            </div>
+            <div class="panel-footer text-right">
+              <button type="text" name="button" class="btn btn-danger"
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Clique para cancelar">
+              Cancelar
+            </button>
+            <button type="submit" name="button" class="btn btn-success"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Clique para cadastrar"
+            ng-click="u.cadastrar()">
+            Cadastrar
+          </button>
         </div>
-      </div>
+      </form>
+    </div>
   </div>
+</div>
+</div>
 </div>

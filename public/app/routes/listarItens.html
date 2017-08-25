@@ -1,0 +1,29 @@
+<div ng-controller="itensCtrl as it">
+  <div class="container baixar">
+    <div class="row" ng-init="it.getItens()">
+        <div class="col-md-offset-3 col-md-6">
+          <form class="" method="post">
+            <div class="panel panel-default text-center">
+              <div class="panel-heading">
+                <h3>Itens</h3>
+              </div>
+              <div class="panel-body">
+                <ul class="list-group">
+                    <div class="col-md-12" ng-repeat="itens in it.itens">
+                      <a style="color:black">
+                        <li class="list-group-item">
+                              <b>{{itens.titulo}}</b> - {{itens.autor}} | {{itens.genero}}
+                              <button class="btn btn-default btn-xs pull-right" ng-click="it.excluirItem(itens._id)">
+                                  <span class="glyphicon glyphicon-trash"></span>
+                              </button>
+                        </li>
+                     </a>
+                    </div>
+                </ul>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
+  </div>
+</div>

@@ -5,10 +5,6 @@ var wsb = angular.module('wsb', ['ngRoute']);
   .when('/teste', {
 		templateUrl : 'app/routes/teste.html'
 	})
-	//template inicial
-	.when('/', {
-		templateUrl : 'app/routes/inicial.html'
-	})
 	// tela incial do usuário
 	.when('/home', {
 		templateUrl : 'app/routes/telaPrincipal.html'
@@ -40,6 +36,14 @@ var wsb = angular.module('wsb', ['ngRoute']);
   //pagina de cadastro de mídias digitais
   .when('/cadastroMidiaD', {
 		templateUrl : 'app/routes/cadastroMidiaD.html'
+	})
+  //Listar usuarios
+  .when('/getUsuarios', {
+		templateUrl : 'app/routes/listarUsuarios.html'
+	})
+  //listar Itens
+  .when('/getItens', {
+		templateUrl : 'app/routes/listarItens.html'
 	})
 	.otherwise({
 		redirectTo: '/'

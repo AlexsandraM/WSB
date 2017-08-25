@@ -1,45 +1,24 @@
 var express = require('express')
 var bodyParser = require('body-Parser')
-var Item = require('../model/item_bb.js')
+var Livro = require('../models/livro.js')
 var app = express()
-
 var routes = express.Router()
 
-app.use(bodyParser.json())
-app.use(require('../model/livro'))
+//
+// app.use(bodyParser.json())
+// app.use(require('../models/livro'))
 
 // R O T A S
-
-routes.post('/item', function (req, res) {
-		tipo = req.body.tipo
-
-	if(tipo = 'livro'){
-		var item = new Livro({
+//cadastrar livro
+routes.post('/livro', function (req, res) {
+		var livro = new Livro({
+			titulo: req.body.titulo,
 			autor: req.body.autor,
 		  isbn: req.body.isbn,
-		  paginas: req.body.paginas,
-		  quantidade: req.body.quantidade
+		  genero: req.body.genero
 		})
-	}
 
-	if(tipo = 'midia'){
-		var item = new MidiaDigital({
-		autor: req.body.autor,
-		issn: req.body.issn,
-		tamanho: req.body.tamanho
-	})
-	}
-
-	if(tipo = 'periodico'){
-		var item = new Periodico({
-		issn: req.body.issn,
-		paginas: req.body.paginas,
-		quantidade: req.body.quantidade,
-		edicao: req.body.edicao
-	})
-	}
-
-	item.save().then((obj) => {
+	livro.save().then((obj) => {
 		res.json({
 	  	success: true,
 	  	result: obj
@@ -50,25 +29,52 @@ routes.post('/item', function (req, res) {
 	  	result: err
 	  })
 	})
-//})
-	var ib = new Item_Biblioteca({
-  	titulo: req.body.titulo,
-  	nota: req.body.nota,
-  	tipo: req.body.tipo,
-  	genero: req.body.genero,
-		objeto: item._id
-	})
-  ib.save().then((obj) => {
+}) // put
+
+//cadastrar periodico
+routes.post('/Periodico', function (req, res) {
+
+		var periodico = new Livro({
+			titulo: req.body.titulo,
+			editora: req.body.editora,
+		  codigo: req.body.codigo,
+		  genero: req.body.genero
+		})
+
+	periodico.save().then((obj) => {
 		res.json({
 	  	success: true,
 	  	result: obj
-	  }) // json
+	  })
 	}, (err) => {
 		res.json({
 	  	success: false,
 	  	result: err
-	  }) // json
-	}) // then
+	  })
+	})
+}) // put
+
+//cadastrar Mídia Digital
+routes.post('/MDigital', function (req, res) {
+
+		var md = new Livro({
+			titulo: req.body.titulo,
+			autor: req.body.autor,
+		  issn: req.body.issn,
+		  genero: req.body.genero
+		})
+
+	md.save().then((obj) => {
+		res.json({
+	  	success: true,
+	  	result: obj
+	  })
+	}, (err) => {
+		res.json({
+	  	success: false,
+	  	result: err
+	  })
+	})
 }) // put
 
 routes.put('/item/:id', function (req, res) {
@@ -110,20 +116,12 @@ routes.put('/item/:id', function (req, res) {
 		})
 })
 
-routes.get('/item', function(req, res) {
-	Item_Biblioteca.find({}).exec()
-		.then((its) => {
-			res.json({
-				success: true,
-				result: its
-			})
-		}, (err) => {
-			res.json({
-				success: false,
-				result: err
-			})
-		});
-})
+routes.get('/getItens', function(req, res) {
+  Livro.find({}, '_id titulo autor genero isbn', function(erro, itens) {
+    res.json({result: itens});
+  });
+});
+
 
 routes.get('/item/:id', function(req, res) {
 
@@ -159,20 +157,17 @@ routes.get('/item/:name', function(req, res) {
 })
 
 
-routes.delete('/item/:nome', function(req,res){
-	var tituloItem = reqs.params.titulo;
-	Item_Biblioteca.remove({titulo: tituloItem})
-	.then((it) => {
-		res.json({
-			success: true,
-			message: "Excluída com sucesso"
-		})
-	}, (err) =>{
-		res.json({
-			success: false,
-			result: err
-		})
-	})
+routes.delete('/itens/:id', (req, res) => {
+  Livro.findByIdAndRemove(req.params.id).select('_id').exec().then(
+    item => {
+      if (item) {
+        responder(res, true, "", item)
+      } else {
+        responder(res, false, "Item não encontrado.", undefined)
+      }
+    }, erro => {
+        responder(res, false, "Item não encontrado.", undefined)
+    }) // then
 })
 
 module.exports = routes;

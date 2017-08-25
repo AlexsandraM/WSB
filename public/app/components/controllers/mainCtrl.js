@@ -38,9 +38,8 @@ self.closeAlert = function(){
     self.event = false;
 }
 
-self.sair = function() {
+self.sair = function () {
   authSvc.logout();
   $location.path('/login');
-}
-
+  }
 }

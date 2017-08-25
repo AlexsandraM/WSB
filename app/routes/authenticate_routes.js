@@ -36,33 +36,6 @@ routes.post('/authenticate', function(req, res) {
 })
 })
 
-// route middleware para verificar o token
-routes.use(function(req, res, next) {
-  // obtendo o token
-  var token = req.body.token || req.query.token || req.headers['x-access-token'];
-
-  // decode token
-  if (token) {
-    // verificando secret
-    jwt.verify(token, config.secret, function(err, decoded) {
-      if (err) {
-        return res.json({ success: false, message: 'Falha ao autenticar o token.' });
-      } else {
-        // se tudo ocorrer certo, salva a requisição para usar em outras rotas
-        req.decoded = decoded;
-        next();
-      }
-    });
-
-  } else {
-    // se não retornar um token
-    return res.status(403).send({
-      success: false,
-      message: 'Token não fornecido.'
-    });
-
-  }
-});
 
 // route para mostrar uma mensagem inicial (GET http://localhost:3000/api/)
 routes.get('/', function(req, res) {

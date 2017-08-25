@@ -13,7 +13,6 @@ function AuthService($http, $window, $location) {
 
   self.cadastrar = function(nome, matricula, curso, email, senha){
     return $http.post(API + '/users', {
-      token: self.getToken(),
       nome: nome,
       matricula: matricula,
       curso: curso,
