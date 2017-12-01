@@ -5,16 +5,39 @@ function ApiService($http, authSvc) {
   var self = this;
   var token = authSvc.getToken();
 
+
+//Usuário
   self.getUsuarios = function(){
     return $http.get(API + '/getUsers' + "/?token=" + token)
+  }
+
+  self.getProfessores = function(){
+    return $http.get(API + '/getProfessores' + "/?token=" + token)
+  }
+
+  self.getTecnicos = function(){
+    return $http.get(API + '/getTecnicos' + "/?token=" + token)
   }
 
   self.excluirUsuario = function(id) {
     return $http.delete(API + '/users/' + id + "/?token=" + token)
   }
 
-  self.excluirItem = function(_id) {
-    return $http.delete(API + '/itens/' + _id + "/?token=" + token)
+  self.excluirProfessor = function(id) {
+    return $http.delete(API + '/professores/' + id + "/?token=" + token)
+  }
+
+  self.excluirTecnico = function(id) {
+    return $http.delete(API + '/tecnicos/' + id + "/?token=" + token)
+  }
+
+//Livro
+  self.getLivros = function(){
+    return $http.get(API + '/getLivros' + "/?token=" + token)
+  }
+
+  self.excluirLivro = function(id) {
+    return $http.delete(API + '/livros/' + id + "/?token=" + token)
   }
 
   self.cadastrarLivro = function(titulo, autor, isbn, genero){
@@ -26,38 +49,40 @@ function ApiService($http, authSvc) {
     })
   }
 
+//periodico
+  self.getPeriodicos = function(){
+    return $http.get(API + '/getPeriodicos' + "/?token=" + token)
+  }
+
+  self.excluirPeriodico = function(id) {
+    return $http.delete(API + '/periodicos/' + id + "/?token=" + token)
+  }
+
   self.cadastrarPeriodico = function(titulo, codigo, editora, genero){
-    return $http.post(API + '/Periodico', {
+    return $http.post(API + '/Periodico' + "/?token=" + token, {
       titulo: titulo,
       codigo: codigo,
-      editora: isbn,
+      editora: editora,
       genero: genero
     })
   }
 
-  self.cadastrarMD = function(titulo, codigo, editora, genero){
-    return $http.post(API + '/MDigital', {
+//Mídias digitais
+  self.getMDigitais = function(){
+    return $http.get(API + '/getMDigitais' + "/?token=" + token)
+  }
+
+  self.excluirMDigital = function(id) {
+    return $http.delete(API + '/mDigitais/' + id + "/?token=" + token)
+  }
+
+  self.cadastrarMD = function(titulo, autor, issn, genero){
+    return $http.post(API + '/MDigital' + "/?token=" + token, {
       titulo: titulo,
-      codigo: codigo,
-      editora: isbn,
+      codigo: autor,
+      editora: issn,
       genero: genero
     })
   }
-
-  self.getItens = function(){
-    return $http.get(API + '/getItens' + "/?token=" + token)
-  }
-
-  // self.getLivros = function(){
-  //   return $http.get(API + '/getLivros' + "/?token=" + token)
-  // }
-  //
-  // self.getPeriodicos = function(){
-  //   return $http.get(API + '/getPeriodicos' + "/?token=" + token)
-  // }
-  //
-  // self.getMDigitais = function(){
-  //   return $http.get(API + '/getMDigitais' + "/?token=" + token)
-  // }
 
 }

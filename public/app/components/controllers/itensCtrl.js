@@ -15,23 +15,7 @@ function itensCtrl($scope, $rootScope, $routeParams, $location, apiSvc, authSvc)
     //$location.path('/home');
   }
 
-  self.excluirItem = function (_id) {
-    apiSvc.excluirItem(_id)
-    .then(function(res) {
-      self.getItens();
-    }, function(erro){
-      console.log("erro ao excluir");
-    })
-  }
+  self.reserva = function(titulo, autor) {
 
-
-  self.getItens = function(){
-    apiSvc.getItens()
-    .then(function(res) {
-      self.itens = res.data.result;
-      console.log(self.itens)
-    }, function(erro) {
-      console.log("erro");
-    })
   }
 }

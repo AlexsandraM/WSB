@@ -1,6 +1,6 @@
-wsb.controller('userCtrl', UserController)
+wsb.controller('profCtrl', ProfessorController)
 
-function UserController($scope, $rootScope, $routeParams, $location, authSvc, apiSvc) {
+function ProfessorController($scope, $rootScope, $routeParams, $location, authSvc, apiSvc) {
   var self = this;
   self.nome = "";
   self.matricula = "";
@@ -12,7 +12,7 @@ function UserController($scope, $rootScope, $routeParams, $location, authSvc, ap
   self.mensagem2 = "";
   self.esconder = "sr-only";
 
-  self.cadastrar =  function(){
+  self.cadastrarProfessor =  function(){
     if(self.nome == "" || self.matricula == "" || self.curso == "" || self.email =="" || self.senha==""){
       self.esconder = "";
       self.evento = "alert-danger"
@@ -20,7 +20,7 @@ function UserController($scope, $rootScope, $routeParams, $location, authSvc, ap
       self.mensagem2 = "Cadastro inválido";
       console.log("Erro!");
     }else{
-      authSvc.cadastrar(self.nome, self.matricula, self.curso, self.email, self.senha)
+      authSvc.cadastrarProfessor(self.nome, self.matricula, self.curso, self.email, self.senha)
       .then(function(res){
           console.log("Usuário cadastrado!");
           $location.path('/getUsuarios');
@@ -34,10 +34,10 @@ function UserController($scope, $rootScope, $routeParams, $location, authSvc, ap
     }
   }
 
-  self.excluirUsuario = function (id) {
-    apiSvc.excluirUsuario(id)
+  self.excluirProfessor = function (id) {
+    apiSvc.excluirProfessor(id)
     .then(function(res) {
-      self.getUsuarios();
+      self.getProfessores();
       $location.path('/getUsuarios');
     }, function(erro){
       console.log("erro ao excluir");
@@ -45,19 +45,11 @@ function UserController($scope, $rootScope, $routeParams, $location, authSvc, ap
   }
 
 
-  self.cancelar = function(){
-    self.nome = "";
-    self.matricula = "";
-    self.curso = "";
-    self.email = "";
-    self.senha = "";
-  }
-
-  self.getUsuarios = function(){
-    apiSvc.getUsuarios()
+  self.getProfessores = function(){
+    apiSvc.getProfessores()
     .then(function(res) {
-      self.usuarios = res.data.result;
-      console.log(self.usuarios)
+      self.professores = res.data.result;
+      console.log(self.professores)
     }, function(erro) {
       console.log("erro");
     })

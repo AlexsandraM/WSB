@@ -1,4 +1,4 @@
-<div ng-controller="mainCtrl as c">
+<div ng-cloak ng-controller="mDigitalCtrl as md">
 <div class="container baixar">
   <div class="row">
     <div class="col-md-offset-3 col-md-6">
@@ -12,26 +12,26 @@
             <div class="form-group">
               <div class="col-md-12">
                 <label for="nome" class="control-label">Título</label>
-                <input class="form-control" type="text" name="titulo" value="">
+                <input class="form-control" type="text" ng-model="md.titulo" value="">
               </div>
             </div>
 
             <div class="form-group">
               <div class="col-md-12">
                 <label for="sobrenome">Autor</label>
-                <input class="form-control" type="text" name="autor" value="">
+                <input class="form-control" type="text" ng-model="md.autor" value="">
               </div>
             </div>
 
             <div class="form-group">
               <div class="col-md-6">
                 <label for="nome" class="control-label">ISSN</label>
-                <input class="form-control" type="text" name="nome" value="">
+                <input class="form-control" type="text" ng-model="md.issn" value="">
               </div>
 
               <div class="col-md-6">
                 <label for="name" class="control-label">Gênero</label>
-                <select class="form-control" name="genero">
+                <select class="form-control" name="genero" ng-model="md.genero">
                   <option></option>
                   <option>Ação</option>
                   <option>Aventura</option>
@@ -48,22 +48,19 @@
             data-toggle="tooltip"
             data-placement="bottom"
             title="Clique para cancelar">
-            Cancelar
+            Limpar
           </button>
           <button type="submit" name="button" class="btn btn-success"
           data-toggle="tooltip"
           data-placement="bottom"
-          title="Clique para cadastrar">
+          title="Clique para cadastrar"
+          ng-click="md.cadastrarMDigital()">
           Cadastrar
-        </button>
-      </div>
+          </button>
+        </div>
       </form>
   </div>
 </div>
 </div>
 </div>
 </div>
-</div>
-</div>
-</body>
-</html>

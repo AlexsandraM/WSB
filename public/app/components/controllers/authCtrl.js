@@ -5,8 +5,10 @@ function AuthenticationCtrl($scope, $rootScope, $routeParams, $location, authSvc
   self.matricula = "";
   self.senha = "";
   var erro = false;
-  self.eventClass = "";
-  self.navbar = false
+  self.evento = "";
+  self.mensagem = "";
+  self.mensagem2 = "";
+  self.esconder = "sr-only";
 
   self.handleRequest = function(res) {
     var token = res.data ? res.data.token : null;
@@ -23,25 +25,25 @@ function AuthenticationCtrl($scope, $rootScope, $routeParams, $location, authSvc
       var token = res.data ? res.data.token : null;
         if(token){
           authSvc.saveToken(token);
-          erro = false;
-          // self.error(erro)
           $location.path('/home')
         }else{
+          self.esconder = ""
+          self.evento = "alert-danger"
+          self.mensagem = "Erro!"
+          self.mensagem2 = "Matricula ou senha incorretas";
           console.log(res.data);
-          erro = true;
-          // self.error(self.erro)
         }
       }, (res) => {
         var token = res.data ? res.data.token : null;
         if(token){
           authSvc.saveToken(token);
-          erro = false;
-          // self.error(erro)
           $location.path('/home')
         }else{
+          self.esconder = ""
+          self.evento = "alert-danger"
+          self.mensagem = "Erro!"
+          self.mensagem2 = "Matricula ou senha incorretas";
           console.log(res.data.mensagem);
-          erro = true;
-          // self.error(erro);
         }
       })
   }

@@ -6,34 +6,22 @@ var self = this;
 self.matricula = "";
 self.senha = "";
 
-  self.registrarUsuario = function(){
-    apiSvc.cadastrarCliente(self.matricula, self.senha)
+self.emprestimo = function (idItem, idUser) {
+  apiSvc.acharItem(idItem)
+  .then(function(item) {
+    apiSvc.acharUsuario(idUser)
+    .then(function(usuario){
+      apiSvc.emprestimo(item, usuario)
       .then(function(res){
-        if(res.data.success){
-          console.log(res.data.result);
-          console.log('Cadastro efetuado com sucesso!');
-          $location.path('/login');
-        }else{
-          console.log(res.data);
-          $scope.data = res.data;
-          $rootScope.$broadcast('evento', {alerta: "erro",
-          message: "Erro! O formulário de cadastro está incompleto ou errado"})
-        }
+        console.log("Empréstimo realizado!");
+        $location.path('/home');
       })
-  }
+    })
 
-self.isAuthed = authSvc.isAuthed;
-
-$scope.$on('evento', function(erro, args){
-  self.event = true;
-  if(args.alerta == "erro"){
-    self.eventClass = 'alert-danger';
-  }else{
-    self.eventClass = 'alert-info';
-  }
-  self.eventMessage = args.message;
-})
-
+  }, function(erro){
+    console.log("erro ao excluir", erro);
+  })
+}
 self.closeAlert = function(){
     self.event = false;
 }

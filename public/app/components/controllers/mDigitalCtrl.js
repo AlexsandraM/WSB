@@ -8,23 +8,26 @@ function MDigitalController($scope, $rootScope, $routeParams, $location, authSvc
   self.genero = "";
 
   self.cadastrarMDigital =  function(){
-    apiSvc.cadastrarMDigital(self.titulo, self.autor, self.issn, self.genero)
+    apiSvc.cadastrarMD(self.titulo, self.autor, self.issn, self.genero)
     .then(function(res){
         console.log("Mídia digital cadastrada!");
-        $location.path('/home');
+        $location.path('/getItens');
     }, function(erro){
        console.log("Erro!");
     })
   }
 
-  self.cancelar = function(){
-    self.titulo = "";
-    self.autor = "";
-    self.issn = "";
-    self.genero = "";
+  self.excluirMDigital = function (id) {
+    apiSvc.excluirMDigital(id)
+    .then(function(res) {
+      self.getMDs();
+      $location.path('/getItens');
+    }, function(erro){
+      console.log("erro ao excluir", erro);
+    })
   }
 
-  self.getMD = function(){
+  self.getMDs = function(){
     apiSvc.getMDigitais()
     .then(function(res) {
       self.mDigitais = res.data.result;

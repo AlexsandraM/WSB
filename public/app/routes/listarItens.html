@@ -1,29 +1,92 @@
-<div ng-controller="itensCtrl as it">
-  <div class="container baixar">
-    <div class="row" ng-init="it.getItens()">
-        <div class="col-md-offset-3 col-md-6">
-          <form class="" method="post">
-            <div class="panel panel-default text-center">
-              <div class="panel-heading">
-                <h3>Itens</h3>
-              </div>
-              <div class="panel-body">
-                <ul class="list-group">
-                    <div class="col-md-12" ng-repeat="itens in it.itens">
-                      <a style="color:black">
-                        <li class="list-group-item">
-                              <b>{{itens.titulo}}</b> - {{itens.autor}} | {{itens.genero}}
-                              <button class="btn btn-default btn-xs pull-right" ng-click="it.excluirItem(itens._id)">
-                                  <span class="glyphicon glyphicon-trash"></span>
-                              </button>
-                        </li>
-                     </a>
-                    </div>
-                </ul>
-              </div>
+<div ng-cloak class="container baixar">
+  <div ng-controller="livroCtrl as lc">
+    <div class="row" ng-init="lc.getLivros()">
+      <div class="col-md-offset-3 col-md-6">
+        <form class="" method="post">
+          <div class="panel panel-default text-center">
+            <div class="panel-heading">
+              <h3>Livros</h3>
             </div>
-          </form>
-        </div>
+            <div class="panel-body">
+              <ul class="list-group">
+                <div class="col-md-12" ng-repeat="livros in lc.livros">
+                  <a style="color:black">
+                    <li class="list-group-item">
+                      [#{{livros.emprestado}}] <b>{{livros.titulo}}</b> - {{livros.autor}} | {{livros.genero}}
+                      <button class="btn btn-default btn-xs pull-right" ng-click="lc.excluirItem(livros._id)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                      </button>
+                      <button class="btn btn-default btn-xs pull-right" ng-click="lc.reserva(livros.titulo, livros.autor)">
+                        <span class="glyphicon glyphicon-plus"></span>
+                      </button>
+                    </li>
+                  </a>
+                </div>
+              </ul>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div ng-controller="periodicoCtrl as pr">
+    <div class="row" ng-init="pr.getPeriodicos()">
+      <div class="col-md-offset-3 col-md-6">
+        <form class="" method="post">
+          <div class="panel panel-default text-center">
+            <div class="panel-heading">
+              <h3>Periódicos</h3>
+            </div>
+            <div class="panel-body">
+              <ul class="list-group">
+                <div class="col-md-12" ng-repeat="periodicos in pr.periodicos">
+                  <a style="color:black">
+                    <li class="list-group-item">
+                      [#{{periodicos.emprestado}}] <b>{{periodicos.titulo}}</b> - {{periodicos.editora}} | {{periodicos.genero}}
+                      <button class="btn btn-default btn-xs pull-right" ng-click="pr.excluirPeriodico(periodicos._id)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                      </button>
+                      <button class="btn btn-default btn-xs pull-right" ng-click="pr.reserva(periodicos.titulo, periodicos.editora)">
+                        <span class="glyphicon glyphicon-plus"></span>
+                      </button>
+                    </li>
+                  </a>
+                </div>
+              </ul>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div ng-controller="mDigitalCtrl as md">
+    <div class="row" ng-init="md.getMDs()">
+      <div class="col-md-offset-3 col-md-6">
+        <form class="" method="post">
+          <div class="panel panel-default text-center">
+            <div class="panel-heading">
+              <h3>Mídias Digitais</h3>
+            </div>
+            <div class="panel-body">
+              <ul class="list-group">
+                <div class="col-md-12" ng-repeat="mds in md.mDigitais">
+                  <a style="color:black">
+                    <li class="list-group-item">
+                      [#{{mds.emprestado}}] <b>{{mds.titulo}}</b> - {{mds.autor}} | {{mds.genero}}
+                      <button class="btn btn-default btn-xs pull-right" ng-click="md.excluirMDigital(mds._id)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                      </button>
+                      <button class="btn btn-default btn-xs pull-right" ng-click="md.reserva(mds.titulo, mds.autor)">
+                        <span class="glyphicon glyphicon-plus"></span>
+                      </button>
+                    </li>
+                  </a>
+                </div>
+              </ul>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>

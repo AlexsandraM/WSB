@@ -46,7 +46,7 @@ var wsb = angular.module('wsb', ['ngRoute']);
 		templateUrl : 'app/routes/listarItens.html'
 	})
 	.otherwise({
-		redirectTo: '/'
+		redirectTo: '/login'
 	})
 
 });

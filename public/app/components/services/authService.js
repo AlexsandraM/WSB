@@ -21,6 +21,25 @@ function AuthService($http, $window, $location) {
     })
   }
 
+  self.cadastrarProfessor = function(nome, matricula, curso, email, senha){
+    return $http.post(API + '/professor', {
+      nome: nome,
+      matricula: matricula,
+      curso: curso,
+      email: email,
+      senha: senha
+    })
+  }
+
+  self.cadastrarTecnico = function(nome, matricula, email, senha){
+    return $http.post(API + '/tecnico', {
+      nome: nome,
+      matricula: matricula,
+      email: email,
+      senha: senha
+    })
+  }
+
   self.parseJwt = function(token) {
     var base64Url = token.split('.')[1];
     var base64 = base64Url.replace('-', '+').replace('_', '/');

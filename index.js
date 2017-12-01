@@ -14,12 +14,13 @@ app.set('superSecret', config.secret); // secret variable
 router.use(require('./app/routes/authenticate_routes'))
 router.use(require('./app/routes/user_routes'))
 router.use(require('./app/routes/item_routes'))
+router.use(require('./app/routes/emprestimo_routes'))
 app.use(express.static(__dirname + '/public'))
 app.use('/scripts', express.static(__dirname + '/node_modules/'));
 app.use('/api', router)
 
 
-var server = app.listen(3000, function(){
+var server = app.listen(3000, "0.0.0.0", function(){
   console.log('Example app listening on port 3000!')
   console.log(config.ambiente)
 })

@@ -11,25 +11,31 @@ function PeriodicoController($scope, $rootScope, $routeParams, $location, authSv
     apiSvc.cadastrarPeriodico(self.titulo, self.codigo, self.editora, self.genero)
     .then(function(res){
         console.log("Periódico cadastrado!");
-        $location.path('/home');
+        $location.path('/getItens');
     }, function(erro){
        console.log("Erro!");
     })
   }
 
-  self.cancelar = function(){
-    self.titulo = "";
-    self.codigo = "";
-    self.editora = "";
-    self.genero = "";
+  self.excluirPeriodico = function (id) {
+    apiSvc.excluirPeriodico(id)
+    .then(function(res) {
+      self.getPeriodicos();
+      $location.path('/getItens');
+    }, function(erro){
+      console.log("erro ao excluir", erro);
+    })
   }
 
   self.getPeriodicos = function(){
     apiSvc.getPeriodicos()
     .then(function(res) {
       self.periodicos = res.data.result;
+      console.log(self.periodicos)
     }, function(erro) {
       console.log("erro");
     })
   }
+
+
 }

@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var UsuarioSchema = new Schema({
+var ProfessorSchema = new Schema({
   matricula: {type: String, unique: true, required: true},
   senha: {type: String, required: true},
   nome: {type: String, required: true},
@@ -9,4 +9,4 @@ var UsuarioSchema = new Schema({
   curso: {type: String}
 });
 
-module.exports = mongoose.model('User', UsuarioSchema);
+module.exports = mongoose.model('Professor', ProfessorSchema);
